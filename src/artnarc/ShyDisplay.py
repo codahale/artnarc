@@ -1,8 +1,6 @@
-#!/usr/bin/python
-
 from opencv.cv import *
 from opencv.highgui import *
-from artnarc import Webcam
+from Webcam import Webcam
 
 """
 A webcam display which gets shy when you look at it.
@@ -54,7 +52,6 @@ class ShyDisplay(Webcam):
         self.face_count = [count] + self.face_count[0:self.max_face_samples - 1]
     
     def has_faces(self):
-        print self.face_count
         return sum(self.face_count) >= self.min_face_count
         
 

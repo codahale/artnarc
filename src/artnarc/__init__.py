@@ -1,1 +1,0 @@
-from Webcam import Webcam
