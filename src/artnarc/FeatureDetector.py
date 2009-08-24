@@ -18,6 +18,7 @@ class FeatureDetector(object):
     def detect(self, frame):
         self.copy_frame(frame)
         small_img = self.resize_frame(self.frame_copy)
+        # TODO: wrap these and translate the coordinates here
         return cvHaarDetectObjects(small_img, self.cascade, self.storage, self.haar_scale, self.min_neighbors, self.haar_flags, self.min_size)
     
     def copy_frame(self, frame):
