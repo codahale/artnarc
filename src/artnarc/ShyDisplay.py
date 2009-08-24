@@ -1,7 +1,7 @@
 from opencv.cv import *
 from opencv.highgui import *
 from Webcam import Webcam
-from FeatureDetector import FeatureDetector
+from FeatureDetector import FeatureDetector, DebugFeatureDetector
 
 """
 A webcam display which gets shy when you look at it.
@@ -10,10 +10,10 @@ class ShyDisplay(Webcam):
     max_face_samples = 3
     min_face_count = 1
     
-    def __init__(self, cascade_filename):
-        super(ShyDisplay, self).__init__()
+    def __init__(self, cascade_filename, detector_type=FeatureDetector):
+        super(ShyDisplay, self).__init__(window_name="Shy Display")
         self.face_count = []
-        self.detector = FeatureDetector(cascade_filename)
+        self.detector = detector_type(cascade_filename)
     
     def process_frame(self, frame):
         faces = self.detector.detect(frame)
