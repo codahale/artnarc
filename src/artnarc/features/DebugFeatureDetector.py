@@ -12,10 +12,7 @@ class DebugFeatureDetector(FeatureDetector):
     
     def detect(self, frame):
         features = super(DebugFeatureDetector, self).detect(frame)
-        if features:
-            for r in features:
-                pt1 = cvPoint(int(r.x*self.image_scale), int(r.y*self.image_scale))
-                pt2 = cvPoint(int((r.x+r.width)*self.image_scale), int((r.y+r.height)*self.image_scale))
-                cvRectangle(self.frame_copy, pt1, pt2, CV_RGB(255,0,0), 3, 8, 0)
+        for f in features:
+            cvRectangle(self.frame_copy, f.upper_left.to_cvPoint(), f.lower_right.to_cvPoint(), CV_RGB(255,0,0), 3, 8, 0)
         cvShowImage("Features", self.frame_copy)
         return features

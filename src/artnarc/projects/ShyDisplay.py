@@ -17,8 +17,7 @@ class ShyDisplay(Webcam):
     
     def process_frame(self, frame):
         faces = self.detector.detect(frame)
-        if faces:
-            self.face_count = [faces.total] + self.face_count[0:self.max_face_samples - 1]
+        self.face_count = [len(faces)] + self.face_count[0:self.max_face_samples - 1]
         if sum(self.face_count) >= self.min_face_count:
             cvSetZero(frame)
         cvShowImage(self.window_name, frame)
