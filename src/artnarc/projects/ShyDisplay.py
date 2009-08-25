@@ -1,6 +1,7 @@
 from opencv.cv import *
 from opencv.highgui import *
-from artnarc import Webcam, FeatureDetector
+from artnarc.input import Webcam
+from artnarc.features import FeatureDetector, DebugFeatureDetector
 
 """
 A webcam display which gets shy when you look at it.
